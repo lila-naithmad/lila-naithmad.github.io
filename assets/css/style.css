@@ -42,7 +42,7 @@
 /* Empêche les mots / titres de casser bizarrement */
 .card, .section-title, .list, .list li {
   word-break: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word; /* casse seulement si nécessaire */
 }
 
 /* ===============================
