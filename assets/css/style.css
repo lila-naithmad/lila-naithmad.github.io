@@ -3,9 +3,23 @@
    =============================== */
 
 .container {
-  max-width: 1200px;      /* largeur confortable */
-  margin: 0;              /* aligné à gauche (cohérent avec la sidebar) */
-  padding: 48px 64px;     /* respiration */
+  max-width: 1100px;
+  width: 100%;
+  margin: 0;                 /* aligné à gauche */
+  padding: 48px 64px;
+}
+
+/* Responsive (évite l’étroitesse sur petits écrans) */
+@media (max-width: 900px) {
+  .container {
+    padding: 32px 24px;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    padding: 24px 16px;
+  }
 }
 
 /* ===============================
@@ -16,9 +30,19 @@
   background: #ffffff;
   border-radius: 12px;
   padding: 28px 32px;
-  margin: 32px 0;
-  max-width: 900px;       /* empêche l’effet “colonne étroite” */
+  margin: 24px 0;
+
+  /* FIX définitif anti “colonne étroite” */
+  width: 100%;
+  max-width: 920px;
+
   box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* Empêche les mots / titres de casser bizarrement */
+.card, .section-title, .list, .list li {
+  word-break: normal;
+  overflow-wrap: anywhere;
 }
 
 /* ===============================
@@ -27,26 +51,28 @@
 
 .h1 {
   font-size: 42px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-weight: 650;
+  margin: 0 0 12px;
 }
 
 .lead {
   font-size: 18px;
   color: #666;
-  margin-bottom: 32px;
+  margin: 0 0 28px;
 }
 
 .section-title {
   font-size: 20px;
-  font-weight: 600;
-  margin-bottom: 12px;
+  font-weight: 650;
+  margin: 0 0 12px;
 }
 
 .list {
   padding-left: 18px;
+  margin: 0;
 }
 
 .list li {
   margin-bottom: 8px;
+  line-height: 1.55;
 }
