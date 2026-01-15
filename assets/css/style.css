@@ -1,78 +1,209 @@
 /* ===============================
-   Zone de contenu principale
+   Base
    =============================== */
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-.container {
+:root{
+  --bg: #f5f6f7;
+  --text: #111;
+  --muted: #666;
+  --panel: #ffffff;
+  --sidebar: #6f767a;
+  --sidebarText: rgba(255,255,255,0.92);
+  --sidebarMuted: rgba(255,255,255,0.78);
+  --accent: #0f6a74;
+  --border: rgba(0,0,0,0.08);
+  --shadow: 0 14px 40px rgba(0,0,0,0.08);
+}
+
+html, body { height: 100%; }
+
+body{
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.55;
+}
+
+/* Liens (évite le bleu “brut”) */
+a{ color: inherit; text-decoration: none; }
+a:hover{ text-decoration: underline; }
+
+/* ===============================
+   Layout général
+   =============================== */
+.layout{
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+}
+
+/* ===============================
+   Sidebar
+   =============================== */
+.sidebar{
+  background: var(--sidebar);
+  color: var(--sidebarText);
+  padding: 40px 28px;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow: auto;
+}
+
+.brand{ margin-bottom: 26px; }
+
+.profile{
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.avatar{
+  width: 64px; height: 64px;
+  border-radius: 14px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+}
+.avatar img{
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.name{
+  font-size: 30px;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+.role{
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--sidebarMuted);
+}
+
+.nav{
+  margin-top: 18px;
+  display: grid;
+  gap: 10px;
+}
+
+.nav a{
+  display: block;
+  padding: 12px 14px;
+  border-radius: 10px;
+  color: var(--sidebarText);
+  background: transparent;
+  text-decoration: none;
+}
+
+.nav a:hover{
+  background: rgba(255,255,255,0.10);
+  text-decoration: none;
+}
+
+.nav a.active{
+  background: rgba(15,106,116,0.95);
+}
+
+.social{
+  margin-top: 26px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.social a{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 34px;
+  padding: 0 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--sidebarText);
+  font-size: 13px;
+}
+.social a:hover{
+  background: rgba(255,255,255,0.18);
+  text-decoration: none;
+}
+
+/* ===============================
+   Zone principale
+   =============================== */
+.main{
+  padding: 0;
+}
+
+.container{
   max-width: 1100px;
   width: 100%;
-  margin: 0;                 /* aligné à gauche */
-  padding: 48px 64px;
+  margin: 0;
+  padding: 56px 72px;
 }
 
-/* Responsive (évite l’étroitesse sur petits écrans) */
-@media (max-width: 900px) {
-  .container {
-    padding: 32px 24px;
-  }
-}
-
-@media (max-width: 520px) {
-  .container {
-    padding: 24px 16px;
-  }
-}
-
-/* ===============================
-   Cartes projets
-   =============================== */
-
-.card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 28px 32px;
-  margin: 24px 0;
-
-  /* FIX définitif anti “colonne étroite” */
-  width: 100%;
-  max-width: 1000px;
-
-  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
-}
-
-/* Empêche les mots / titres de casser bizarrement */
-.card, .section-title, .list, .list li {
-  word-break: normal;
-  overflow-wrap: break-word; /* casse seulement si nécessaire */
-}
-
-/* ===============================
-   Titres & textes
-   =============================== */
-
-.h1 {
-  font-size: 42px;
+/* Titres */
+.h1{
+  font-size: 44px;
   font-weight: 650;
-  margin: 0 0 12px;
+  letter-spacing: -0.02em;
+  margin: 0 0 10px;
 }
 
-.lead {
+.lead{
   font-size: 18px;
-  color: #666;
+  color: var(--muted);
   margin: 0 0 28px;
 }
 
-.section-title {
+/* Cartes */
+.card{
+  background: var(--panel);
+  border-radius: 14px;
+  padding: 28px 32px;
+  margin: 22px 0;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.section-title{
   font-size: 20px;
   font-weight: 650;
   margin: 0 0 12px;
 }
 
-.list {
+.list{
   padding-left: 18px;
   margin: 0;
 }
 
-.list li {
-  margin-bottom: 8px;
-  line-height: 1.55;
+.list li{
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* Garde des mots lisibles (évite la casse bizarre) */
+.card, .section-title, .list, .list li{
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+/* ===============================
+   Responsive
+   =============================== */
+@media (max-width: 980px){
+  .layout{ grid-template-columns: 1fr; }
+  .sidebar{
+    position: relative;
+    height: auto;
+    padding: 22px 18px;
+  }
+  .container{ padding: 32px 18px; }
 }
